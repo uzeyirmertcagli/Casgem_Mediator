@@ -1,0 +1,22 @@
+﻿@model Casgem_Mediator.MeditorPattern.Commands.CreateProductCommand
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <br />
+    <form method="post">
+        <label>Ürün Adı</label>
+        <input type="text" class="form-control" placeholder="Ürün Adı" asp-for="Name" />
+        <br />
+        <label>Ürün Stok Sayısı</label>
+        <input type="text" class="form-control" placeholder="Ürün Stok Sayısı" asp-for="Stock" />
+        <br />
+       <button class="btn btn-primary">Ürünü Ekle</button>
+
+    </form>
+    
+</div>
