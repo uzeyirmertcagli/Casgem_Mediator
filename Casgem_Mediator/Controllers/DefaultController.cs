@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Casgem_Mediator.Controllers
 {
-    //askdjbaskjdbaasdasjn
+
     public class DefaultController : Controller
     {
         readonly IMediator _mediator;
@@ -38,6 +38,20 @@ namespace Casgem_Mediator.Controllers
         public async Task<IActionResult> DeleteProduct(int id)
         {
             await _mediator.Send(new RemoveProductCommand(id));
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateProduct(int id)
+        {
+            var value = await _mediator.Send(new GetProductUpdateByIDQuery(id));
+            return View(value);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProduct(UpdateProductCommand command)
+        {
+            var value = await _mediator.Send(command);
             return RedirectToAction("Index");
         }
     }
